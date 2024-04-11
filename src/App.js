@@ -8,7 +8,9 @@ import AdminLayout from "./Layout/AdminLayout";
 import AllTeachers from "./pages/AllTeachers";
 import AdminDashboard from "./pages/AdminDashboard";
 import AddTeacher from "./pages/AddTeacher";
+import { adminApi_handleAdminLogin } from "./api/paths/admin_api";
 function App() {
+  adminApi_handleAdminLogin();
   return (
     <BrowserRouter>
       <Routes>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Admin.css";
 import { Outlet, Link } from "react-router-dom";
 import { CaretRight } from "phosphor-react";
 import SidebarData from "../config/SidebarData";

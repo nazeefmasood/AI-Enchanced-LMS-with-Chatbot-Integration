@@ -1,6 +1,7 @@
 import React from "react";
 
 const AdminLogin = () => {
+  
   return (
     <div className="w-full min-h-screen bg-black flex">
       <div className="w-[45%] h-[100vh] bg-white">
