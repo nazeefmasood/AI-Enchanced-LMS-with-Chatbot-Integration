@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { CaretRight } from "phosphor-react";
-import SidebarData from "../config/SidebarData";
+import AdminSidebarData from "../config/AdminSidebarData";
 
 const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -23,7 +23,7 @@ const AdminLayout = () => {
           </button>
         </div>
         <div className="pt-[20px] flex flex-col gap-2">
-          {SidebarData.map((item, index) => {
+          {AdminSidebarData.map((item, index) => {
             const isActive = index === activeParent;
             return (
               <div>
@@ -53,7 +53,7 @@ const AdminLayout = () => {
           })}
         </div>
       </section>
-      <section className="rightSideAd">
+      <section className=" flex-1">
         <Outlet />
       </section>
     </main>
