@@ -4,14 +4,25 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 export const addTeacherToFirebase = async (req, res) => {
   try {
     const data = await req.body;
-    await data.forEach((element) => {
-      const docRef = addDoc(collection(firestore, "teachers"), element);
-      console.log("Document written with ID: ", docRef.id);
-    });
+    console.log(
+      "🔴 ~ file: teacherController.js:7 ~ addTeacherToFirebase ~ data:",
+      data
+    );
+
+    const {
+      universty_profile: {},
+      personalInformation: {
+        contactInformation: { email },
+      },
+      personalInformation: { fullName },
+    } = await req.body;
+
+    const defaultPassword = `${fullName}2024?$`;
+    const docRef = addDoc(collection(firestore, "teachers"), data);
   } catch (error) {}
 };
 export const addUnivertyListController = async (req, res) => {
-  try {
+  /* try {
     const data = await req.body;
     await data.forEach((element) => {
       const docRef = addDoc(
@@ -20,7 +31,7 @@ export const addUnivertyListController = async (req, res) => {
       );
       console.log("Document written with ID: ", docRef.id);
     });
-  } catch (error) {}
+  } catch (error) {} */
 };
 
 export const getUnivertyAndProgramsController = async (req, res) => {
@@ -73,4 +84,15 @@ export const getUnivertyAndProgramsController = async (req, res) => {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+};
+
+export const getALLTeacherBackend = async (req, res) => {
+  try {
+    const teachers = getDocs(collection(firestore, "teachers"));
+    const teacherData = (await teachers).docs.map((doc) => doc.data());
+    console.log(teacherData);
+    res.status(200).json({
+      teacherData,
+    });
+  } catch (error) {}
 };
